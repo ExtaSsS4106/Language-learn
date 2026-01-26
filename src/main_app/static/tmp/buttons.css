@@ -1,22 +1,23 @@
-button{
-  width: 272px;
-  height: 50px;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: none; 
-  transition: all 0.1s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(253, 253, 253);
-  background-color: #109410;
-      font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+.custom-btn{
+  width: 272px !important;
+  height: 50px !important;
+  
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)!important;
+  border: none!important;
+  transition: all 0.1s!important;
+  display: flex!important;
+  align-items: center!important;
+  justify-content: center!important;
+  color: rgb(253, 253, 253)!important;
+  background-color: #09DA09!important;
+      font-size: 16px!important;
+    font-weight: bold!important;
+    cursor: pointer!important;
+    border-radius: 20px!important;
 }
 
 button:hover {
-    background-color: #0d7a0d;
+    background-color: #3ec53e!important;
 }
 
 button:active {
