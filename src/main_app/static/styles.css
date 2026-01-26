@@ -51,6 +51,8 @@ section {
     align-items: center;
     justify-content: center;
     color: aliceblue;
+    font-weight: bold;
+
 }
 
 .login:active, .signin:active {
@@ -58,6 +60,15 @@ section {
     box-shadow: none;
 }
 
+.login:hover {
+    background-color: #50e650;
+     cursor: pointer;
+}
+
+.signin:hover {
+    background-color: #686868;
+     cursor: pointer;
+}
 .login {
     background-color: #09DA09;
 }
