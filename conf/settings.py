@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'src.main_app',
     
     'crispy_forms', # бибдлиотека для формы авторизации
-    'crispy_bootstap5' 
+    'crispy_bootstrap5' 
 ]
 
 # Разрешение стороним библиотекам работать с templates
