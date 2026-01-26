@@ -137,3 +137,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 CSRF_TRUSTED_ORIGINS = ["https://alternately-airy-tigerfish.cloudpub.ru"]
+
+
+
+LOGIN_URL = '/login/'  # или оставьте 'accounts/login/' по умолчанию
+LOGIN_REDIRECT_URL = '/home'  # куда перенаправлять после логина
+LOGOUT_REDIRECT_URL = '/'  # куда перенаправлять после логаута
