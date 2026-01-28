@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+
+  <style>
+    body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #353434;
+}
+header {
+  /* Rectangle 1 */
+
+  width: 100%;
+  height: 60px;
+  left: 6px;
+  top: 4px;
+
+  background: #d9d9d9;
+  border-radius: 10px;
+
+  display: grid;
+
+  grid-template-columns: 50% 50%;
+}
+
+._right_side {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.-L-right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 10px;
+}
+
+.-usrnm {
+  display: flex;
+
+  height: 70%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.User_name {
+  top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #535353;
+
+  width: 134px;
+  height: 20px;
+
+  background: #fffdfd;
+  border-radius: 10px;
+
+  text-align: center;
+  line-height: 20px;
+}
+
+.avatar {
+  /* Ellipse 1 */
+  width: 54px;
+  height: 54px;
+
+  border-radius: 30px;
+  background: #ffffff;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding-left: 50px;
+}
+
+section {
+  /* Frame 1 */
+
+  width: 100%;
+  min-height: 80vh;
+  left: 7px;
+  top: 36px;
+
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+
+.language {
+  width: 95%;
+  height: 100px;
+  background: #d9d9d9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.IMG_ {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.progress_label{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.btn_continue{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.lang-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  transition: all 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(253, 253, 253);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.skip {
+  background-color: #474747;
+}
+
+.continue {
+  background-color: #09da09;
+}
+.continue {
+  background-color: #3ec53e;
+}
+.skip:hover {
+  background-color: #686868;
+}
+button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+
+
+img {
+  width: 150px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.add-more {
+  /* Ellipse 2 */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url('https://img.icons8.com/?size=100&id=IA4hgI5aWiHD&format=png&color=000000');
+    background-size: 120%; /* Размер иконки внутри кнопки */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  
+  /* Добавьте это */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <header>
+
+  <div class="_left_side"></div>
+  <div class="_right_side">
+    <div class="-L-left"></div>
+    <div class="-L-right">
+      <div class="-usrnm">
+        <div class="User_name">{{user.username}}</div>
+      </div>
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+</header>
+<section>
+
+  <div class="label"><h3>Список языков пользователя</h3></div>
+
+  <div class="lang-list">
+    {% for language in language %}
+      <div class="language">
+        <div class="IMG_">
+          <img src="{{language.ico}}"/>
+        </div>
+        <div class="progress_label">
+          <h3>{{language.language_name}}</h3>
+        </div>
+        <div class="btn_continue">
+          <button class="continue">Продолжить</button>
+        </div>
+      </div>
+    {% endfor %}
+    <button class="add-more" onclick="window.location.href='/choose-lang'"></button>
+
+  </div>
+
+</section>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
