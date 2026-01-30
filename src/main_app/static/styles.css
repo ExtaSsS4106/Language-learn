@@ -96,7 +96,7 @@ section {
     height: 50px;
     border-radius: 15px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border: none; 
+    border: none;
     transition: all 0.1s;
     display: flex;
     align-items: center;
@@ -104,9 +104,10 @@ section {
     color: aliceblue;
     font-weight: bold;
     opacity: 0;
-    animation: slideInUp 1.0s ease-out 0.5s forwards;
+    animation: slideInUp 1.0s ease-out forwards;
 
 }
+
 
 .login {
     animation-delay: 0.3s;
@@ -118,7 +119,10 @@ section {
 
 .login:active, .signin:active {
     transform: translateY(4px);
-    box-shadow: none;
+    /* Убираем нижнюю границу и тень при нажатии */
+    border-bottom-width: 3px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    /* Отключаем hover эффект при активном состоянии */
 }
 
 .login:hover {
@@ -132,10 +136,12 @@ section {
 }
 .login {
     background-color: #09DA09;
+    border-bottom: 7px solid #64AA4F;
 }
 
 .signin {
     background-color: #474747;
+    border-bottom: 7px solid #1a1a1a;
 }
 
 .IMG_ {

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle h0b4L713</title>
+
+  <style>
+    
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #353434;
+}
+header {
+  /* Rectangle 1 */
+
+  width: 100%;
+  height: 60px;
+  left: 6px;
+  top: 4px;
+
+  background: #d9d9d9;
+  border-radius: 10px;
+
+  display: grid;
+
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+._left_side{
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+.selected-lang{
+  /* Frame 9 */
+
+width: 100%;
+height: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+}
+.lang-head{
+  width: 100px;
+  height: 50px;
+}
+.previous{
+  box-shadow: none;
+  background-color: #5c5c5c00;
+  background-image: url('https://cdn-icons-png.freepik.com/512/3943/3943355.png?ga=GA1.1.786309148.1769554732');
+  background-size: 120%; /* Размер иконки внутри кнопки */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  
+  /* Добавьте это */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._right_side {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.IMG-NAME_{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+.IMG-NAME_{justify-content: flex-start;
+  padding-left: 10px;
+}
+.-L-right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 10px;
+}
+
+.-usrnm {
+  display: flex;
+
+  height: 70%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.User_name {
+  top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #535353;
+
+  width: 134px;
+  height: 20px;
+
+  background: #fffdfd;
+  border-radius: 10px;
+
+  text-align: center;
+  line-height: 20px;
+}
+
+.avatar {
+  /* Ellipse 1 */
+  width: 54px;
+  height: 54px;
+
+  border-radius: 30px;
+  background: #ffffff;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding-left: 50px;
+}
+
+section {
+  /* Frame 1 */
+
+  width: 100%;
+  min-height: 80vh;
+  left: 7px;
+  top: 36px;
+
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+
+.language {
+  width: 95%;
+  height: 100px;
+  background: #d9d9d9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 7px solid #8a8a8aff;
+}
+.IMG_ {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding-left: 20px;
+
+}
+.btn-color-green{
+  background-color: #09DA09;
+  border-bottom: 7px solid #038a03;
+}
+.color-black{
+  color: #353434;
+}
+.progress{
+  /* Frame 10 */
+
+  width: 100px;
+  height: 50px;
+
+
+  background: #A7A7A7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.-levl{
+  /* Frame 6 */
+
+width: 60px;
+height: 50px;
+
+
+background: #09DA09;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.font-size-medium{
+  font-size: 17px;
+  max-height: 10px;
+}
+.progress_label{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.space{
+  flex-grow: 1;
+
+}
+
+.btn_continue{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+.lang-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+button {
+  width: 50px;
+  height: 50px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(253, 253, 253);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px;
+  
+}
+
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+  border-bottom-width: 3px;
+}
+
+button:hover {
+  transform:translateY(1px);
+}
+
+
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+
+.add-more {
+  /* Ellipse 2 */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url('https://img.icons8.com/?size=100&id=IA4hgI5aWiHD&format=png&color=000000');
+    background-size: 120%; /* Размер иконки внутри кнопки */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  
+  /* Добавьте это */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  </style>
+
+  
+</head>
+<body>
+  <header>
+
+  <div class="_left_side">
+    <button class="previous" onclick="window.location.href='/home'"></button>
+    <dir class="selected-lang">
+
+      
+      <img class="lang-head" src="{{language.ico}}"/>
+      <h3>{{language.language_name}}</h3>
+      
+
+    </dir>
+
+  </div>
+  <div class="_right_side">
+    <div class="-L-left"></div>
+    <div class="-L-right">
+      <div class="-usrnm">
+        <div class="User_name">{{user.username}}</div>
+        
+      </div>
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+</header>
+<section>
+
+  <div class="label"><h3>Список языков пользователя</h3></div>
+
+  <div class="lang-list">
+    {% if levels %}
+    
+        {% for level in levels %}
+          <button class="language">
+            <div class="IMG_">
+              <div class="-levl"><h1>{{level.level}}</h1></div>
+              {% if user_progres %}
+              <img src="https://img.icons8.com/?size=100&id=uyrZ3pmWbVAz&format=png&color=000000"/>
+              {% else %}
+              <img src="https://img.icons8.com/?size=100&id=T9nkeADgD3z6&format=png&color=000000"/>        
+              {% endif %}
+                <p class="color-black">Знакомство с нглийским языком</p>      
+
+            </div>
+            <div class="progress_label">
+              <div class="progress">5/5</div>
+            </div>
+            <div class="space"></div>
+            <div class="btn_continue">
+              <img src="https://img.icons8.com/?size=100&id=7849&format=png&color=000000"/>
+            </div>
+          </button>
+        {% endfor %}
+      {% else %}
+    {% endif %}
+  </div>
+
+</section>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>

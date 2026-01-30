@@ -5,10 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home</title>
+  <title>JSFiddle h0b4L713</title>
 
   <style>
-    body {
+    
+
+body {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -29,14 +31,70 @@ header {
   display: grid;
 
   grid-template-columns: 50% 50%;
+  align-items: center;
 }
+._left_side{
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+.selected-lang{
+  /* Frame 9 */
 
+width: 100%;
+height: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+}
+.lang-head{
+  width: 100px;
+  height: 50px;
+}
+.previous{
+  box-shadow: none;
+  background-color: #5c5c5c00;
+  background-image: url('https://cdn-icons-png.freepik.com/512/3943/3943355.png?ga=GA1.1.786309148.1769554732');
+  background-size: 120%; /* Размер иконки внутри кнопки */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  
+  /* Добавьте это */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ._right_side {
   height: 100%;
   display: grid;
   grid-template-columns: 60% 40%;
 }
-
+.IMG-NAME_{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+.IMG-NAME_{justify-content: flex-start;
+  padding-left: 10px;
+}
 .-L-right {
   display: flex;
   flex-direction: row;
@@ -116,10 +174,11 @@ section {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border-bottom: 7px solid #8a8a8aff;
 }
 .IMG_ {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: start;
@@ -127,14 +186,52 @@ section {
   padding-left: 20px;
 }
 
-.progress_label{
-  flex-grow: 1;
+.progress{
+  /* Frame 10 */
+
+  width: 100px;
+  height: 50px;
+
+
+  background: #A7A7A7;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.A1-levl{
+  /* Frame 6 */
+
+width: 50px;
+height: 50px;
+
+
+background: #09DA09;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.progress_label{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+
+}
+
+.space{
+  flex-grow: 1;
+
 }
 
 .btn_continue{
@@ -142,7 +239,7 @@ section {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   gap: 10px;
 }
@@ -156,16 +253,13 @@ section {
   gap: 10px;
 }
 
-
-
-
 button {
-  width: 200px;
+  width: 50px;
   height: 50px;
 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
-  transition: all 0.1s;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,33 +271,25 @@ button {
   
 }
 
-.skip {
-  background-color: #474747;
-}
 
-.continue {
-  background-color: #09da09;
-  border-bottom: 7px solid #64AA4F;
-}
-.continue {
-  background-color: #3ec53e;
-}
-.skip:hover {
-  background-color: #686868;
-}
 button:active {
   transform: translateY(4px);
   box-shadow: none;
   border-bottom-width: 3px;
 }
 
+button:hover {
+  background-color:#C6C6C6;
+}
+
 
 
 img {
-  width: 150px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
 }
+
 
 .add-more {
   /* Ellipse 2 */
@@ -227,6 +313,7 @@ img {
   justify-content: center;
 }
 
+
   </style>
 
   
@@ -234,12 +321,24 @@ img {
 <body>
   <header>
 
-  <div class="_left_side"></div>
+  <div class="_left_side">
+    <button class="previous" onclick="window.location.href='/home'"></button>
+    <dir class="selected-lang">
+
+      
+      <img class="lang-head" src="{{language.ico}}"/>
+      <h3>{{language.language_name}}</h3>
+      
+
+    </dir>
+
+  </div>
   <div class="_right_side">
     <div class="-L-left"></div>
     <div class="-L-right">
       <div class="-usrnm">
         <div class="User_name">{{user.username}}</div>
+        
       </div>
       <div class="avatar"></div>
     </div>
@@ -251,21 +350,29 @@ img {
   <div class="label"><h3>Список языков пользователя</h3></div>
 
   <div class="lang-list">
-    {% for language in language %}
-      <div class="language">
-        <div class="IMG_">
-          <img src="{{language.ico}}"/>
-        </div>
-        <div class="progress_label">
-          <h3>{{language.language_name}}</h3>
-        </div>
-        <div class="btn_continue">
-          <button class="continue"onclick="window.location.href='{% url 'lang_levels' language.language_name %}'">Продолжить</button>
-        </div>
-      </div>
-    {% endfor %}
-    <button class="add-more" onclick="window.location.href='/choose-lang'"></button>
-
+    {% if levels %}
+    
+        {% for level in levels %}
+            <button class="language"  onclick="window.location.href='{% url 'lang_tasks' language.language_name level%}'">
+              <div class="IMG_">
+                <div class="A1-levl"><h1>{{level}}</h1></div>
+                {% if user_progres.staus == "completed" %}
+                <img src="https://img.icons8.com/?size=100&id=uyrZ3pmWbVAz&format=png&color=000000"/>
+                {% else %}
+                <img src="https://img.icons8.com/?size=100&id=T9nkeADgD3z6&format=png&color=000000"/>        
+                {% endif %}
+              </div>
+              <div class="progress_label">
+                <div class="progress">5/5</div>
+              </div>
+              <div class="space"></div>
+              <div class="btn_continue">
+                <img src="https://img.icons8.com/?size=100&id=7849&format=png&color=000000"/>
+              </div>
+            </button>
+        {% endfor %}
+      {% else %}
+    {% endif %}
   </div>
 
 </section>

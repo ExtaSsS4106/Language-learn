@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSFiddle Lx7gnqcz</title>
+
+  <style>
+    
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #353434;
+}
+header {
+  /* Rectangle 1 */
+
+  width: 100%;
+  height: 60px;
+  left: 6px;
+  top: 4px;
+
+  background: #d9d9d9;
+  border-radius: 10px;
+
+  display: grid;
+
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+._left_side{
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+.selected-lang{
+  /* Frame 9 */
+
+width: 100%;
+height: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+}
+.lang-head{
+  width: 100px;
+  height: 50px;
+}
+.previous{
+  box-shadow: none;
+  background-color: #5c5c5c00;
+  background-image: url('https://cdn-icons-png.freepik.com/512/3943/3943355.png?ga=GA1.1.786309148.1769554732');
+  background-size: 120%; /* Размер иконки внутри кнопки */
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  
+  /* Добавьте это */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+._right_side {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+.IMG-NAME_{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
+}
+.IMG-NAME_{justify-content: flex-start;
+  padding-left: 10px;
+}
+.-L-right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 10px;
+}
+
+.-usrnm {
+  display: flex;
+
+  height: 70%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.User_name {
+  top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #535353;
+
+  width: 134px;
+  height: 20px;
+
+  background: #fffdfd;
+  border-radius: 10px;
+
+  text-align: center;
+  line-height: 20px;
+}
+
+.avatar {
+  /* Ellipse 1 */
+  width: 54px;
+  height: 54px;
+
+  border-radius: 30px;
+  background: #ffffff;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding-left: 50px;
+}
+
+section {
+  /* Frame 1 */
+
+  width: 100%;
+  min-height: 80vh;
+  left: 7px;
+  top: 36px;
+
+  display: grid;
+  grid-template-rows: 20% 90%;
+  /* Frame 1 */
+
+box-sizing: border-box;
+border-radius: 4px;
+
+}
+
+.course {
+  width: 95%;
+  height: 700px;
+  background: #d9d9d9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.tasks {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 30px;
+}
+.t-panel{
+  width: 90%;
+  height: 90%;
+  background-color: #F9F3F3;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+}
+.progress{
+  /* Frame 10 */
+
+  width: 100px;
+  height: 50px;
+
+
+  background: #A7A7A7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+
+
+
+
+
+
+.screen{
+  flex-grow: 1;
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.screen-back{
+  background-color: #B5B5B5;
+  height: 90%;
+  width: 90%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.screen-main{
+  height: 90%;
+  width: 95%;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+    overflow-y: auto;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.screen-content{
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 20px;
+}
+
+/* Для Chrome, Safari, Edge */
+.lang-list-selection::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lang-list-selection::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.lang-list-selection::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.lang-list-selection::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.variants{
+  flex-grow: 1;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 50px;
+
+}
+.variant-btn{
+  width: 200px;
+  height: 50px;
+}
+.title{
+  background-color: #CECECE;
+  color: #353434;
+  display: flex;
+
+  text-align: center;
+  justify-content: center;
+  font-size: 12px;
+  width: 90%;
+  height: 60px;
+  border-radius: 20px;
+}
+
+.lang-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-task{
+  width: 95%;
+  height: 50px;
+  border-bottom: 4px solid #8a8a8aff;
+}
+.completed{
+  background-color: #09DA09;
+  border-bottom: 4px solid #64AA4F;
+}
+
+.in_progress{
+  background-color: #DA8A09;
+  border-bottom: 4px solid #B5740A;
+}
+
+.didnt_pass{
+  background-color: #da0909ff;
+  border-bottom: 4px solid #b5150aff;
+}
+.not_started{
+    color: black;
+}
+button {
+  width: 50px;
+  height: 50px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(253, 253, 253);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+  border-bottom: 2px;
+
+}
+
+
+
+.btn-task:hover{
+  transform: translateY(1px);
+}
+
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+
+
+
+
+  </style>
+
+  {% csrf_token %}
+</head>
+<body>
+  <header>
+
+  <div class="_left_side">
+    <button class="previous"></button>
+    <dir class="selected-lang">
+
+      
+      <img class="lang-head" src="https://languagetraining.com/wp-content/uploads/2015/11/flag-english.jpg"/>
+      <h3>English</h3>
+      
+
+    </dir>
+
+  </div>
+  <div class="_right_side">
+    <div class="-L-left"></div>
+    <div class="-L-right">
+      <div class="-usrnm">
+        <div class="User_name">ExtaSsS</div>
+        
+      </div>
+      <div class="avatar"></div>
+    </div>
+  </div>
+
+</header>
+<section>
+
+  <div class="label"><h3>Список языков пользователя</h3></div>
+
+  <div class="lang-list">
+
+    <div class="course">
+      <div class="tasks">
+        <div class="t-panel">
+            {% for task in tasks_with_progress %}
+                <button 
+                
+                taskId = "{{task.task_id}}"
+                
+                class="btn-task {{task.status}}">{{task.task}}</button>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div class="screen">
+        <div class="screen-back">
+          <div class="screen-main">
+              <div class="screen-content">
+                
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+  <script>
+
+
+
+    function getCsrfToken() {
+      const name = 'csrftoken';
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    // CSRF токен для Django
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn-task');
+            const screenContent = document.querySelector('.screen-content');
+            const csrfToken = getCsrfToken();
+            buttons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const taskId = this.getAttribute('data-id');
+                    
+                    try {
+                        // Показываем загрузку
+                        screenContent.innerHTML = '<p>Загрузка...</p>';
+                        
+                        const response = await fetch('/api', { // Ваш URL
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': csrfToken
+                            },
+                            body: JSON.stringify({ task_id: this.getAttribute('taskId') })
+                        });
+                        const result = await response.text();
+                        document.querySelector(".screen-content").innerHTML = result; 
+
+                    } catch (error) {
+                        console.error("[Error]", error);
+                    }
+
+                });
+            });
+        });
+
+  </script>
+</body>
+</html>
