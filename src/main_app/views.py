@@ -118,6 +118,7 @@ def lang_tasks(request, language_name, level):
             'task_id': task.id,
             'task': task.title,
             'status': status,
+            'count': task.count,
             'completed': status == 'completed',
             'in_progress': status == 'in_progress',
             'didnt_pass': status == 'didnt_pass',
@@ -125,35 +126,29 @@ def lang_tasks(request, language_name, level):
         })
     
     
-    
     return render(request, 'main/lang-tasks.html', {'tasks_with_progress': tasks_with_progress, 'language': language})
+    
+@login_required
+def btn_progress(request):
+    user = request.user
+    data = json.loads(request.body)
+    level = data.get('level')
+    language = data.get('language')
+    
     
 @login_required
 def start_task(request):
     if request.method == 'POST':
         data =json.loads(request.body)
         taskId = data.get('task_id')
-        user = request.user
         try:
             tasks = Tasks.objects.get(
                 id = taskId
             )
             
-            data = {
-                'count': tasks.count,
-                '_type': tasks._type,
-                '_img': tasks._img,
-                'title': tasks.title,
-                'description': tasks.description,
-                'content': tasks.content,
-                'wrong_answers': tasks.wrong_answers,
-                'answer': tasks.answers,
-                'language': tasks.language,
-                'level': tasks.level
-            }
         except Exception as e:
             return HttpResponse(f'<h1>ERROR: {e}</h1>')
-    return render(request, 'main/screen.html', {'data':data})
+    return render(request, 'main/screen.html', {'tasks':tasks})
     
 # регистрация
 def sign_up(request):
@@ -171,31 +166,55 @@ def sign_up(request):
 
 
 @login_required
-def check_status(request):
+def set_progress(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         task_id = data.get('task_id')
         user = request.user
-        status = data.get('status')
+        mark = data.get('mark')
+        count = data.get('count')
+        level = data.get('level')
+        language = data.get('language')
         
-        match status:
-            case 'in_progress':
-                UserProgress.objects.update_or_create(
-                    task = task_id,
-                    user_language = user,
-                    status = 'in_progress'
-                )
-            case 'completed':
-                UserProgress.objects.update_or_create(
-                    task = task_id,
-                    user_language = user,
-                    status = 'completed'
-                )
-            case 'didnt_pass':
-                UserProgress.objects.update_or_create(
-                    task = task_id,
-                    user_language = user,
-                    status = 'didnt_pass'
-                )
+        user_language = UsersLanguages.objects.get(
+            user_id=user,
+            language_id__language_name = language
+        )
+        
+        UserProgress.objects.update_or_create(
+            task_id = task_id,
+            user_language = user_language,
+            defaults={  # ВСЕ поля для создания/обновления должны быть здесь!
+                'status': 'completed',
+                'mark': 'correct' in mark
+            }
+        )
+        progress = UserProgress.objects.filter(
+                user_language = user_language,
+                task__level__level = level
+            ).order_by('task__count')
+        try:
+            new_task = Tasks.objects.get(
+                level__level = level,
+                count = int(count)+1
+            )   
+        except Exception:
+            new_task = None
+            pass
+        if new_task:
+            return render(request, 'main/screen.html', {'tasks':new_task, 'progress':progress})
+        else:
+
+            for p in progress:
+                print(f"""
+                      Count: {p.task.count}
+                      User: {p.user_language.user_id}
+                      Task: {p.task.title}
+                      status: {p.status}
+                      Mark: {p.mark}
+                      """)
+            return render(request, 'main/screen-info.html', {'progress':progress, 'language':language})
+        
+
         
         

@@ -35,7 +35,11 @@ class Tasks(models.Model):
     title = models.CharField(max_length=255, null=False)
     description = models.CharField(max_length=255, null=False)
     content = models.TextField(null=False)
-    wrong_answers = models.TextField(null=True)
+    wrong_answers = models.JSONField(
+            default=list,  # значение по умолчанию - пустой список
+            null=True,
+            blank=True
+        )    
     answers = models.TextField(null=True)
     
     
@@ -67,11 +71,11 @@ class UserProgress(models.Model):
     task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
     user_language = models.ForeignKey(UsersLanguages, on_delete=models.CASCADE)
     status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='not_started',null=False)
+    mark = models.BooleanField(null=False, default=False)
     
     class Meta:
         verbose_name = 'Прогресс пользователя'
         verbose_name_plural = 'Прогресс пользователей'
-        unique_together = ['user_language', 'task']
     
     def __str__(self):
         return f"{self.user_language.user_id.username} - {self.language_level_course_task.task.title} ({self.status}) {self.user_language.language_id.language_name}"

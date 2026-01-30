@@ -1,0 +1,7 @@
+{% for task in tasks_with_progress %}
+    <button 
+    
+    taskId = "{{task.task_id}}"
+    
+    class="btn-task {{task.status}}">{{task.task}}</button>
+{% endfor %}

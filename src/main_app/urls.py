@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="home"),
-    path('api', views.start_task, name='start_task'),
+    path('api/get_tasks', views.start_task, name='start_task'),
+    path('api/set_progress', views.set_progress, name='set_progress'),
     
     path('home', views.home, name="home"),
     path('sign-up', views.sign_up, name='sign_up'),

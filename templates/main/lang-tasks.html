@@ -279,7 +279,17 @@ border-radius: 4px;
   gap: 30px;
   padding-bottom: 20px;
 }
-
+.screen-content-end{
+  width:100%;
+  background-color:#bdbabaaf;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  border-radius:20px;
+  gap: 30px;
+}
 /* Для Chrome, Safari, Edge */
 .lang-list-selection::-webkit-scrollbar {
   width: 8px;
@@ -301,7 +311,7 @@ border-radius: 4px;
 
 .variants{
   flex-grow: 1;
-  width: 100%;
+  width: 70%;
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -314,9 +324,11 @@ border-radius: 4px;
 .variant-btn{
   width: 200px;
   height: 50px;
+    background-color: #09DA09;
+  border-bottom: 4px solid #64AA4F;
 }
 .title{
-  background-color: #CECECE;
+  background-color: #afacacff;
   color: #353434;
   display: flex;
 
@@ -410,12 +422,12 @@ img {
   <header>
 
   <div class="_left_side">
-    <button class="previous"></button>
+    <button class="previous" onclick="window.location.href='{% url 'lang_levels' language.language_name%}'"></button>
     <dir class="selected-lang">
 
       
-      <img class="lang-head" src="https://languagetraining.com/wp-content/uploads/2015/11/flag-english.jpg"/>
-      <h3>English</h3>
+      <img class="lang-head" src="{{language.ico}}"/>
+      <h3>{{language.language_name}}</h3>
       
 
     </dir>
@@ -425,7 +437,7 @@ img {
     <div class="-L-left"></div>
     <div class="-L-right">
       <div class="-usrnm">
-        <div class="User_name">ExtaSsS</div>
+        <div class="User_name">{{user.username}}</div>
         
       </div>
       <div class="avatar"></div>
@@ -438,6 +450,7 @@ img {
   <div class="label"><h3>Список языков пользователя</h3></div>
 
   <div class="lang-list">
+
 
     <div class="course">
       <div class="tasks">
@@ -489,37 +502,93 @@ img {
       return cookieValue;
     }
 
-    // CSRF токен для Django
+
+  async function fetch_screen(taskId){
+      const csrfToken = getCsrfToken();
+
+      try {
+                // Показываем загрузку
+                document.querySelector(".screen-content").innerHTML = '<p>Загрузка...</p>';
+                
+                const response = await fetch('/api/get_tasks', { // Ваш URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: JSON.stringify({ 
+                      
+                      task_id: taskId
+                  
+                    })
+                });
+                const result = await response.text();
+                document.querySelector(".screen-content").innerHTML = result; 
+                initTaskBtns();
+
+              } catch (error) {
+                      console.error("[Error]", error);
+                  }
+    };
+
+    async function send_to_progress(taskId, mark, count, level, language){
+      const csrfToken = getCsrfToken();
+
+      try {
+                // Показываем загрузку
+                document.querySelector(".screen-content").innerHTML = '<p>Загрузка...</p>';
+                
+                const response = await fetch('/api/set_progress', { // Ваш URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: JSON.stringify({ 
+                      
+                      task_id: taskId,
+                      mark: mark,
+                      count: count,
+                      level: level,
+                      language: language
+                  
+                    })
+                });
+                const result = await response.text();
+                document.querySelector(".screen-content").innerHTML = result; 
+                initTaskBtns();
+
+              } catch (error) {
+                      console.error("[Error]", error);
+                  }
+    };
+    function initTaskBtns(){
+      const buttons = document.querySelectorAll('.variant-btn');
+      buttons.forEach(button =>{
+        button.addEventListener('click', async function(){
+            send_to_progress(
+              this.getAttribute('taskId'), 
+              this.getAttribute('mark'),
+              this.getAttribute('count'),
+              this.getAttribute('level'),
+              this.getAttribute('language')
+              
+            );
+        });
+      });
+    };
+
+
 
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.btn-task');
-            const screenContent = document.querySelector('.screen-content');
-            const csrfToken = getCsrfToken();
             buttons.forEach(button => {
                 button.addEventListener('click', async function() {
-                    const taskId = this.getAttribute('data-id');
-                    
-                    try {
-                        // Показываем загрузку
-                        screenContent.innerHTML = '<p>Загрузка...</p>';
-                        
-                        const response = await fetch('/api', { // Ваш URL
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': csrfToken
-                            },
-                            body: JSON.stringify({ task_id: this.getAttribute('taskId') })
-                        });
-                        const result = await response.text();
-                        document.querySelector(".screen-content").innerHTML = result; 
-
-                    } catch (error) {
-                        console.error("[Error]", error);
-                    }
+                    fetch_screen(this.getAttribute('taskId'));
 
                 });
             });
+            
         });
 
   </script>

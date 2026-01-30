@@ -1,17 +1,29 @@
 
-{% if data %}
+{% if tasks %}
 
 
 
-<div class="title"><h1 >{{data.description}}</h1></div>
-<p> {{data.content}} </p>                          
-<div><h2></h2></div>
+<div class="title"><h1 >{{tasks.description}}</h1></div>
+<div><h1>{{tasks.content}}</h1></div>
 <div class="variants">
-<button class="variant-btn"></button>
-<button class="variant-btn"></button>
-<button class="variant-btn"></button>
-<button class="variant-btn"></button>
+    {% for wrong_answer in tasks.wrong_answers %}
+        <button
+        taskId='{{tasks.id}}'
+        mark='wrong'
+        count='{{tasks.count}}'
+        level='{{tasks.level}}'
+        language='{{tasks.language.language_name}}'
+        class="variant-btn">{{wrong_answer}}</button>
+    {% endfor %}
+    <button
+        taskId='{{tasks.id}}'
+        mark='correct'
+        count='{{tasks.count}}'
+        level='{{tasks.level}}'
+        language='{{tasks.language.language_name}}'
+        class="variant-btn">{{tasks.answers}}</button>
 
+</div>
 
 {% else %}
 {% endif %}

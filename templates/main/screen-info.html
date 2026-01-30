@@ -1,0 +1,19 @@
+
+
+
+{% for p in progress %}
+    <div class="screen-content-end">
+        <h1>{{p.task.count}}</h1>
+        <div class="title"><h1>{{p.task.title}}</h1></div>
+        <div><h2>{{p.status}}</h2></div>
+        {% if p.mark == False %}
+            <div><h2>Не правильно</h2></div>
+        {% elif p.mark == True %}
+            <div><h2>Правильно</h2></div>
+        {% endif %}
+    </div>
+{% endfor %}
+<div class="variants">
+    <button
+        class="completed" style="width:200px;" onclick="window.location.href='{% url 'lang_levels' language%}'">Вернуться назад</button>
+</div>
